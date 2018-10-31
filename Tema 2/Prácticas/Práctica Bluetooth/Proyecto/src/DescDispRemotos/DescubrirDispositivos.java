@@ -1,5 +1,7 @@
 package DescDispRemotos;
 
+import Utiles.Filtro;
+
 import javax.bluetooth.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,9 +13,7 @@ public class DescubrirDispositivos {
 
     public static final List<RemoteDevice> encontrados = new ArrayList<>(); // Lista para almacenar los dispositivos.
 
-    private static boolean filtro;      // Estas variables se usaran en caso de que el
-    private static String direccion;    // usuario decida buscar un solo dispositivo
-    private static String nombre;       // en lugar de todos los dispositivos cercanos.
+    private static Filtro filtro;       //
 
     public static void main(String[] args) throws BluetoothStateException, InterruptedException {
         final Object eventoDispositivos = new Object();         // Objeto usado para sincronizar la busqueda.
@@ -35,8 +35,8 @@ public class DescubrirDispositivos {
                     System.err.println("\tNo puede obtenerse el nombre de '" + dispositivo + "'");
                 }
 
-                if (filtro) {
-                    if (((direccion.equalsIgnoreCase(dirDispositivo) || nombre.equalsIgnoreCase(nomDispositivo)))) {
+                if (filtro != null) {
+                    if (filtro.verificar(nomDispositivo, dirDispositivo)) {
                         System.out.println("Dispositivo: " + dirDispositivo);
                         System.out.println("\tNombre: " + nomDispositivo);
                         System.out.println("\tTipo: " + tipDispositivo);
@@ -63,7 +63,8 @@ public class DescubrirDispositivos {
                     System.err.println("Dispositivo no encontrado.\n\n");
                 }
 
-                System.out.println("...BUSQUEDA DE DISPOSITIVOS FINALIZADA.");
+                System.out.println("...BUSQUEDA DE DISPOSITIVOS FINALIZADA: ");
+                System.out.println("Se ha(n) ecnontrado " + encontrados.size() + " dispositivo(s)\n\n");
 
                 synchronized (eventoDispositivos){   // Sincronizar el objeto de evento.
                     eventoDispositivos.notifyAll();  // Notificar a todas las hebras.
@@ -88,14 +89,10 @@ public class DescubrirDispositivos {
             discoveryAgent.startInquiry(DiscoveryAgent.GIAC, listener);     // Empezar la busqueda de dispositivos.
 
             eventoDispositivos.wait();      // Esperar hasta que se encuentren los dispositivos.
-
-            System.out.println("\nSe han encontrado " + encontrados.size() + " dispositivo(s)\n\n");
         }
     }
 
-    private static boolean filtrarDispositivo(){
-        boolean filtro = false;
-
+    private static Filtro filtrarDispositivo(){
         BufferedReader consola = new BufferedReader(new InputStreamReader(System.in));
         String texto;
 
@@ -106,14 +103,14 @@ public class DescubrirDispositivos {
             texto = consola.readLine();
 
             if(texto.equalsIgnoreCase("si")){
-                System.out.println("\nIntroduce una direccion y/o un nombre para encontrar.");
-                System.out.print("  Direccion Bluetooth: ");
-                direccion = consola.readLine();
-                System.out.print("  Nombre del dispositivo: ");
-                nombre = consola.readLine();
+                System.out.println("\nIntroduce un nombre y/o direccion Bluetooth para filtrar.");
+                System.out.print("\tNombre del dispositivo: ");
+                String nombre = consola.readLine();
+                System.out.print("\tDireccion Bluetooth: ");
+                String direccion = consola.readLine();
                 System.out.println("\nBUSCANDO DISPOSITIVO...\n");
 
-                filtro = true;
+                filtro = new Filtro(nombre, direccion);             // Filtro para el nombre y/o la direccion Bluetooth.
 
             }else if (texto.equalsIgnoreCase("no")){
                 System.out.println("\nBUSCANDO DISPOSITIVOS...\n");

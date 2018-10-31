@@ -1,17 +1,22 @@
 package DescServRemotos;
 
 import DescDispRemotos.DescubrirDispositivos;
+import Utiles.Filtro;
+
 import javax.bluetooth.*;
 import java.io.BufferedReader;
+import java.io.CharArrayReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
 import java.util.List;
 
 public class BuscarServicios {
 
     private static int SERVICE_NAME_ATTRID = 0x0100;    // Atributo para filtrar
 
-    private static boolean filtro;      // Estas variables se usaran
+    private static Filtro filtro;      // Estas variables se usaran
     private static String servicio;     // en caso en el que el usuario
     private static String url;          // decida buscar un solo servicio.
 
@@ -32,7 +37,7 @@ public class BuscarServicios {
             public void deviceDiscovered(RemoteDevice dispositivo, DeviceClass tipo) {
             }
 
-            @Override   // Que hacer cuando la búsqueda de dispositivos finaliza.
+            @Override   // Que hacer cuando la busqueda de dispositivos finaliza.
             public void inquiryCompleted(int i) {
             }
 
@@ -44,23 +49,20 @@ public class BuscarServicios {
                     DataElement elemento = serviceRecords[i].getAttributeValue(SERVICE_NAME_ATTRID);
 
                     if (elemento != null) {
+                        String nombre = arreglarString(elemento.getValue().toString());
+                        String URL = serviceRecords[i].getConnectionURL(ServiceRecord.NOAUTHENTICATE_NOENCRYPT, false);
 
-                        String elementoNombre = elemento.getValue().toString();
-                        String elementoURL = serviceRecords[i].getConnectionURL(ServiceRecord.NOAUTHENTICATE_NOENCRYPT, false);
-
-                        if (filtro) {
-                            if ((servicio.equalsIgnoreCase(elementoNombre) || url.equalsIgnoreCase(elementoURL))) {
-                                System.out.println("\tServicio[" + (i+1) + "]: " + elementoNombre);
-                                System.out.println("\tURL: " + elementoURL);
+                        if (filtro != null) {
+                            if (filtro.verificar(nombre, URL)) {
+                                System.out.println("\tServicio[" + (i+1) + "]: " + nombre);
+                                System.out.println("\tURL: " + URL + "\n");
 
                                 servicios++;
                             }
 
                         } else {
-                            System.out.println("\tServicio[" + (i + 1) + "]: " + elementoNombre);
-                            System.out.println("\tURL: " + elementoURL);
-
-                            System.out.println(/* Linea en blanco */);
+                            System.out.println("\tServicio[" + (i+1) + "]: " + nombre);
+                            System.out.println("\tURL: " + URL + "\n");
 
                             servicios++;
                         }
@@ -68,7 +70,7 @@ public class BuscarServicios {
                 }
 
                 // Mostrar mensaje de error en caso de no encontrar el/los servicio/s.
-                if (filtro && servicios == 0) {
+                if (filtro != null && servicios == 0) {
                     System.err.println("\tServicio no encontrado");
 
                 } else if (servicios == 0) {
@@ -98,10 +100,10 @@ public class BuscarServicios {
             String direccion = dispositivo.getBluetoothAddress();
 
             synchronized (eventoServicios) {
-                if(filtro && servicio != null) {
+                if(filtro != null && servicio != null) {
                     System.out.println("Buscando el servicio '" + servicio + "' en el dispositivo '" + nombre + "' (" + direccion + ")...");
 
-                } else if(filtro && url != null) {
+                } else if(filtro != null && url != null) {
                     System.out.println("Buscando el servicio '" + url + "' en el dispositivo '" + nombre + "' (" + direccion + ")...");
 
                 } else {
@@ -114,7 +116,7 @@ public class BuscarServicios {
             }
         }
 
-        if(filtro) {
+        if(filtro != null) {
             System.out.println("...BUSQUEDA DEl SERVICIO FINALIZADA.");
 
         }else{
@@ -122,9 +124,7 @@ public class BuscarServicios {
         }
     }
 
-    private static boolean filtrarServicio(){
-        boolean filtro = false;
-
+    private static Filtro filtrarServicio(){
         BufferedReader consola = new BufferedReader(new InputStreamReader(System.in));
         String texto;
 
@@ -136,16 +136,13 @@ public class BuscarServicios {
 
             if(texto.equalsIgnoreCase("si")){
                 System.out.println("\nIntroduce el nombre o URL para encontrar.");
-
                 System.out.print("  Nombre del servicio: ");
                 servicio = consola.readLine();
-
                 System.out.print("  URL del servicio: ");
                 url = consola.readLine();
-
                 System.out.println("\nBUSCANDO SERVICIO...\n");
 
-                filtro = true;
+                filtro = new Filtro(servicio, url);
 
             }else if (texto.equalsIgnoreCase("no")){
                 System.out.println("\nBUSCANDO SERVICIOS...\n");
@@ -160,5 +157,27 @@ public class BuscarServicios {
         }
 
         return filtro;
+    }
+
+    /**
+     * 'Arregla' un {@code String} desde los bytes eliminando el ultimo byte a 0.
+     * Esto permite comparar correctamente dos {@code Strings} con 'equals()', ya que
+     * devolver false aunque las cadenas sean iguales si tienen distinto numero de bytes.
+     *
+     * NOTA: Como los datos recibidos estan en ingles, no hay ningun valor ASCII que ocupe
+     * mas de un byte, por eso puede hacerse 'datos[i] = (byte) cadena.charAt(i)'.
+     *
+     * @param cadena {@code String} para 'arreglar'.
+     * @return nuevo {@code String} con el contenido de {@param cadena}, sin el ultimo byte a 0.
+     */
+    private static String arreglarString(String cadena){
+        int numBytes = cadena.toCharArray().length-1;       // Tamaño de la cadena (bytes) menos el ultimo byte.
+        byte[] datos = new byte[numBytes];                  // Array de bytes vacio de tamaño 'numBytes'.
+
+        for(int i = 0; i < numBytes; i++){          // Recorre el array de bytes creado.
+            datos[i] = (byte) cadena.charAt(i);     // Asigna en cada byte
+        }
+
+        return new String(datos);   // String arreglado, sin el ultimo byte a 0.
     }
 }
