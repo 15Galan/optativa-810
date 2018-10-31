@@ -14,9 +14,9 @@ import java.util.List;
 
 public class BuscarServicios {
 
-    private static int SERVICE_NAME_ATTRID = 0x0100;    // Atributo para filtrar
+    private static int SERVICE_NAME_ATTRID = 0x0100;    // Atributo para filtrar los servicios.
 
-    private static Filtro filtro;      // Estas variables se usaran
+    private static Filtro filtro;       // Estas variables se usaran
     private static String servicio;     // en caso en el que el usuario
     private static String url;          // decida buscar un solo servicio.
 
@@ -45,24 +45,24 @@ public class BuscarServicios {
             public void servicesDiscovered(int id, ServiceRecord[] serviceRecords) {
                 int servicios = 0;
 
-                for (int i = 0; i < serviceRecords.length; i++) {
-                    DataElement elemento = serviceRecords[i].getAttributeValue(SERVICE_NAME_ATTRID);
+                for (ServiceRecord servicio : serviceRecords) {
+                    DataElement elemento = servicio.getAttributeValue(SERVICE_NAME_ATTRID);
 
                     if (elemento != null) {
                         String nombre = arreglarString(elemento.getValue().toString());
-                        String URL = serviceRecords[i].getConnectionURL(ServiceRecord.NOAUTHENTICATE_NOENCRYPT, false);
+                        String URL = servicio.getConnectionURL(ServiceRecord.NOAUTHENTICATE_NOENCRYPT, false);
 
                         if (filtro != null) {
                             if (filtro.verificar(nombre, URL)) {
-                                System.out.println("\tServicio[" + (i+1) + "]: " + nombre);
-                                System.out.println("\tURL: " + URL + "\n");
+                                System.out.println("\tServicio: " + nombre);
+                                System.out.println("\t     URL: " + URL + "\n");
 
                                 servicios++;
                             }
 
                         } else {
-                            System.out.println("\tServicio[" + (i+1) + "]: " + nombre);
-                            System.out.println("\tURL: " + URL + "\n");
+                            System.out.println("\tServicio: " + nombre);
+                            System.out.println("\t     URL: " + URL + "\n");
 
                             servicios++;
                         }
