@@ -18,16 +18,16 @@ public class InfoLocal {
         nombre = ld.getFriendlyName();
         direccion = ld.getBluetoothAddress();
         dispositivo = ld.getDeviceClass();
-        version = LocalDevice.getProperty(BlueCoveLocalDeviceProperties.LOCAL_DEVICE_PROPERTY_BLUECOVE_VERSION);
+        version = LocalDevice.getProperty(BlueCoveLocalDeviceProperties.LOCAL_DEVICE_RADIO_VERSION);
     }
 
     @Override
     public String toString(){
 
-        return  "Nombre.......: " + nombre + "\n" +
-                "Direccion....: " + direccion + "\n" +
-                "Dispositivo..: " + dispositivo + "\n" +
-                "Versión BC...: " + version + "\n";
+        return  "Nombre     : " + nombre + "\n" +
+                "Direccion  : " + direccion + "\n" +
+                "Tipo       : " + dispositivo + "\n" +
+                "Ver. Radio : " + version + "\n";
     }
 
     public static void main(String[] args) throws BluetoothStateException {
