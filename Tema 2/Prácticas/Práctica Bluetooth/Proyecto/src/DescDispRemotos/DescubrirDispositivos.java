@@ -13,7 +13,7 @@ public class DescubrirDispositivos {
 
     public static final List<RemoteDevice> encontrados = new ArrayList<>(); // Lista para almacenar los dispositivos.
 
-    private static Filtro filtro;       //
+    private static Filtro filtro;       // Objeto que manejara las comprobaciones para filtrar un dispositivo.
 
     public static void main(String[] args) throws BluetoothStateException, InterruptedException {
         final Object eventoDispositivos = new Object();         // Objeto usado para sincronizar la busqueda.
@@ -23,7 +23,7 @@ public class DescubrirDispositivos {
             @Override   // Que hacer cuando se encuentra un dispositivo.
             public void deviceDiscovered(RemoteDevice dispositivo, DeviceClass tipo) {
                 String dirDispositivo = null;           // Variables locales para
-                String nomDispositivo = null;           // usarla en el metodo
+                String nomDispositivo = null;           // usarlas en el metodo
                 DeviceClass tipDispositivo = null;      // siendo mas eficiente.
 
                 try {
@@ -38,8 +38,8 @@ public class DescubrirDispositivos {
                 if (filtro != null) {
                     if (filtro.verificar(nomDispositivo, dirDispositivo)) {
                         System.out.println("Dispositivo: " + dirDispositivo);
-                        System.out.println("\tNombre: " + nomDispositivo);
-                        System.out.println("\tTipo: " + tipDispositivo);
+                        System.out.println("\t Nombre: " + nomDispositivo);
+                        System.out.println("\t   Tipo: " + tipDispositivo);
 
                         encontrados.add(dispositivo);       // Añadirlo a la lista de dispositivos encontrados.
 
@@ -48,8 +48,8 @@ public class DescubrirDispositivos {
 
                 } else {
                     System.out.println("Dispositivo: " + dirDispositivo);
-                    System.out.println("\tNombre: " + nomDispositivo);
-                    System.out.println("\tTipo: " + tipDispositivo);
+                    System.out.println("\t Nombre: " + nomDispositivo);
+                    System.out.println("\t   Tipo: " + tipDispositivo);
 
                     encontrados.add(dispositivo);       // Añadirlo a la lista de dispositivos encontrados.
 
@@ -84,7 +84,7 @@ public class DescubrirDispositivos {
         synchronized (eventoDispositivos){
             DiscoveryAgent discoveryAgent = LocalDevice.getLocalDevice().getDiscoveryAgent();
 
-            filtro = filtrarDispositivo();       // Activar el filtro para buscar un solo dispositivo.
+            filtrarDispositivo();       // Activar el filtro para buscar un solo dispositivo.
 
             discoveryAgent.startInquiry(DiscoveryAgent.GIAC, listener);     // Empezar la busqueda de dispositivos.
 
@@ -92,15 +92,14 @@ public class DescubrirDispositivos {
         }
     }
 
-    private static Filtro filtrarDispositivo(){
+    private static void filtrarDispositivo(){
         BufferedReader consola = new BufferedReader(new InputStreamReader(System.in));
-        String texto;
 
         System.out.println("¿Filtrar un dispositivo?    (si/no)");
         System.out.print("Respuesta: ");
 
         try {
-            texto = consola.readLine();
+            String texto = consola.readLine();
 
             if(texto.equalsIgnoreCase("si")){
                 System.out.println("\nIntroduce un nombre y/o direccion Bluetooth para filtrar.");
@@ -123,7 +122,5 @@ public class DescubrirDispositivos {
         }catch(IOException e){
             System.err.println("Error: " + e.getMessage());
         }
-
-        return filtro;
     }
 }

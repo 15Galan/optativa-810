@@ -2,23 +2,22 @@ package DescServRemotos;
 
 import DescDispRemotos.DescubrirDispositivos;
 import Utiles.Filtro;
+import Utiles.ServicioBasico;
 
 import javax.bluetooth.*;
 import java.io.BufferedReader;
-import java.io.CharArrayReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
 import java.util.List;
 
 public class BuscarServicios {
 
     private static int SERVICE_NAME_ATTRID = 0x0100;    // Atributo para filtrar los servicios.
 
-    private static Filtro filtro;       // Estas variables se usaran
-    private static String servicio;     // en caso en el que el usuario
-    private static String url;          // decida buscar un solo servicio.
+    public static ServicioBasico servicioF;     // Estas variables se
+    private static Filtro filtro;               // usaran en el caso
+    private static String servicio;             // en el que el usuario
+    private static String url;                  // decida filtrar un servicio.
 
     public static void main(String[] args) throws InterruptedException, IOException {
         final Object eventoServicios = new Object();            // Objeto usado para sincronizar la busqueda.
@@ -57,6 +56,8 @@ public class BuscarServicios {
                                 System.out.println("\tServicio: " + nombre);
                                 System.out.println("\t     URL: " + URL + "\n");
 
+                                servicioF = new ServicioBasico(nombre, URL);
+
                                 servicios++;
                             }
 
@@ -90,7 +91,7 @@ public class BuscarServicios {
         };
 
         // Busqueda de servicios.
-        filtro = filtrarServicio();
+        filtrarServicio();
 
         for (Object encontrado : encontrados) {
             RemoteDevice dispositivo = (RemoteDevice) encontrado;   // Dispositivo actual.
@@ -124,15 +125,14 @@ public class BuscarServicios {
         }
     }
 
-    private static Filtro filtrarServicio(){
+    private static void filtrarServicio(){
         BufferedReader consola = new BufferedReader(new InputStreamReader(System.in));
-        String texto;
 
         System.out.println("¿Filtrar un servicio?    (si/no)");
         System.out.print("Respuesta: ");
 
         try {
-            texto = consola.readLine();
+            String texto = consola.readLine();
 
             if(texto.equalsIgnoreCase("si")){
                 System.out.println("\nIntroduce el nombre o URL para encontrar.");
@@ -155,8 +155,6 @@ public class BuscarServicios {
         }catch(IOException e){
             System.err.println("Error: " + e.getMessage());
         }
-
-        return filtro;
     }
 
     /**

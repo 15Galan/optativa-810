@@ -21,6 +21,22 @@ public class InfoLocal {
         version = LocalDevice.getProperty(BlueCoveLocalDeviceProperties.LOCAL_DEVICE_RADIO_VERSION);
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public DeviceClass getDispositivo() {
+        return dispositivo;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
     @Override
     public String toString(){
 
