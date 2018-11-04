@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40081341-eb49-46fb-b234-178c93763862" name="Default Changelist" comment="Cambios en la Práctica con Bluetooth&#10;&#10;Se ha modificado la clase 'DescubrirDispositivos', se han hecho pequeños&#10;cambios en los comentarios, en la forma de mostrar los datos por pantalla&#10;y en la inicialización del filtro.&#10;Se ha modificado la clase 'BuscarServicios', ahora devuelve un objeto&#10;'ServicioBasico' si encuentra el servicio filtrado y se ha arreglado la&#10;inicialización del filtro.&#10;Se ha creado la clase 'ServicioBasico' que recoge el nombre y la URL de&#10;un servicio específico, indicado por el usuario mediante filtración.">
-      <change afterPath="$PROJECT_DIR$/src/Utiles/ServicioBasico.java" afterDir="false" />
+    <list default="true" id="40081341-eb49-46fb-b234-178c93763862" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Práctica con Bluetooth.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Práctica con Bluetooth.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DescDispRemotos/DescubrirDispositivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DescDispRemotos/DescubrirDispositivos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DescServRemotos/BuscarServicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DescServRemotos/BuscarServicios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DispComBluetooth/InfoLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DispComBluetooth/InfoLocal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RFCOMM/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RFCOMM/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RFCOMM/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RFCOMM/Servidor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,15 +74,15 @@
         <counts>
           <entry key="class" value="7" />
           <entry key="dummy" value="19" />
-          <entry key="java" value="5907" />
-          <entry key="txt" value="1869" />
+          <entry key="java" value="6012" />
+          <entry key="txt" value="2136" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="7" />
-          <entry key="JAVA" value="5907" />
-          <entry key="PLAIN_TEXT" value="1888" />
+          <entry key="JAVA" value="6012" />
+          <entry key="PLAIN_TEXT" value="2155" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -115,96 +108,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RFCOMM/Cliente.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+            <state relative-caret-position="372">
+              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="34" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RFCOMM/Servidor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="55" column="64" selection-start-line="55" selection-start-column="64" selection-end-line="55" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/DescDispRemotos/DescubrirDispositivos.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EjemploChatWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
+            <state relative-caret-position="493">
+              <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#windowClosing#0;class#1517:2643" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DescServRemotos/BuscarServicios.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-              <folding>
-                <element signature="docComment;method#arreglarString#0;class#BuscarServicios#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DispComBluetooth/InfoLocal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-              <folding>
-                <element signature="e#762#763#0" expanded="true" />
-                <element signature="e#798#799#0" expanded="true" />
-                <element signature="e#830#831#0" expanded="true" />
-                <element signature="e#873#874#0" expanded="true" />
-                <element signature="e#907#908#0" expanded="true" />
-                <element signature="e#941#942#0" expanded="true" />
-                <element signature="e#971#972#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Utiles/ServicioBasico.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
-              <folding>
-                <element signature="e#253#254#0" expanded="true" />
-                <element signature="e#282#283#0" expanded="true" />
-                <element signature="e#312#313#0" expanded="true" />
-                <element signature="e#338#339#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Servidor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -292,8 +212,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="818" />
-    <option name="y" value="-11" />
+    <option name="x" value="926" />
+    <option name="y" value="-15" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -357,7 +277,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541354073725" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541355221098" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Archivos adicionales/ChatUI.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -473,7 +393,7 @@
       <workItem from="1541000933213" duration="14355000" />
       <workItem from="1541030506982" duration="865000" />
       <workItem from="1541065159225" duration="10000" />
-      <workItem from="1541348062143" duration="6005000" />
+      <workItem from="1541348062143" duration="7001000" />
     </task>
     <task id="LOCAL-00001" summary="Cambios en la Práctica con Bluetooth&#10;&#10;Se ha creado el paquete 'Utiles' que contendrá clases para mejorar la&#10;modularización del proyecto.&#10;Se ha creado la clase 'Filtro' con el que poder filtrar tanto&#10;dispositivos como servicios independientemente.&#10;Se ha modificado la variable booleana 'filtro' de las clases&#10;'DescubrirDispositivos' y 'BuscarServicios', ahora es de tipo Filtro.">
       <created>1541009462874</created>
@@ -496,17 +416,31 @@
       <option name="project" value="LOCAL" />
       <updated>1541016415600</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Cambios en la Práctica con Bluetooth&#10;&#10;Se ha modificado la clase 'DescubrirDispositivos', se han hecho pequeños&#10;cambios en los comentarios, en la forma de mostrar los datos por pantalla&#10;y en la inicialización del filtro.&#10;&#10;Se ha modificado la clase 'BuscarServicios', ahora devuelve un objeto&#10;'ServicioBasico' si encuentra el servicio filtrado y se ha arreglado la&#10;inicialización del filtro.&#10;&#10;Se ha creado la clase 'ServicioBasico' que recoge el nombre y la URL de&#10;un servicio específico, indicado por el usuario mediante filtración.">
+      <created>1541354106539</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1541354106539</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Cambios en la Práctica con Bluetooth&#10;&#10;El 'Cliente' ya se conecta al 'Servidor', filtrando el dispositivo y el&#10;servicio al que desea conectarse.&#10;&#10;El 'Servidor' ahora usa la clase 'InfoLocal' para mostrar por pantalla&#10;información del dispositivo en el que se ejecuta.">
+      <created>1541354231043</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1541354231043</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24125000" />
+    <option name="totallyTimeSpent" value="25121000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1380597" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2833698" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -545,8 +479,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33187294" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6393443" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39479393" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -578,7 +512,9 @@
     <MESSAGE value="Cambios en la Práctica con Bluetooth&#10;&#10;Se ha creado el paquete 'Utiles' que contendrá clases para mejorar la&#10;modularización del proyecto.&#10;Se ha creado la clase 'Filtro' con el que poder filtrar tanto&#10;dispositivos como servicios independientemente.&#10;Se ha modificado la variable booleana 'filtro' de las clases&#10;'DescubrirDispositivos' y 'BuscarServicios', ahora es de tipo Filtro." />
     <MESSAGE value="Cambios en la Práctica con Bluetooth&#10;&#10;Se ha modificado el último dato de la clase 'InfoLocal', ahora en lugar&#10;de la versión de bluecove muestra la versión de radio del dispositivo." />
     <MESSAGE value="Cambios en la Práctica con Bluetooth&#10;&#10;Se ha modificado la clase 'BuscarServicios', ahora recorre los servicios&#10;con un for-each y también se ha cambiado la visualización por pantalla." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambios en la Práctica con Bluetooth&#10;&#10;Se ha modificado la clase 'BuscarServicios', ahora recorre los servicios&#10;con un for-each y también se ha cambiado la visualización por pantalla." />
+    <MESSAGE value="Cambios en la Práctica con Bluetooth&#10;&#10;Se ha modificado la clase 'DescubrirDispositivos', se han hecho pequeños&#10;cambios en los comentarios, en la forma de mostrar los datos por pantalla&#10;y en la inicialización del filtro.&#10;&#10;Se ha modificado la clase 'BuscarServicios', ahora devuelve un objeto&#10;'ServicioBasico' si encuentra el servicio filtrado y se ha arreglado la&#10;inicialización del filtro.&#10;&#10;Se ha creado la clase 'ServicioBasico' que recoge el nombre y la URL de&#10;un servicio específico, indicado por el usuario mediante filtración." />
+    <MESSAGE value="Cambios en la Práctica con Bluetooth&#10;&#10;El 'Cliente' ya se conecta al 'Servidor', filtrando el dispositivo y el&#10;servicio al que desea conectarse.&#10;&#10;El 'Servidor' ahora usa la clase 'InfoLocal' para mostrar por pantalla&#10;información del dispositivo en el que se ejecuta." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios en la Práctica con Bluetooth&#10;&#10;El 'Cliente' ya se conecta al 'Servidor', filtrando el dispositivo y el&#10;servicio al que desea conectarse.&#10;&#10;El 'Servidor' ahora usa la clase 'InfoLocal' para mostrar por pantalla&#10;información del dispositivo en el que se ejecuta." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -712,16 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RFCOMM/Cliente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DescServRemotos/BuscarServicios.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
@@ -732,9 +658,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DescDispRemotos/DescubrirDispositivos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="51" column="71" lean-forward="true" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Servidor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
+        <state relative-caret-position="340">
           <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
@@ -746,21 +679,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EjemploChatWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/RFCOMM/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
+        <state relative-caret-position="372">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="34" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#windowClosing#0;class#1517:2643" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DescDispRemotos/DescubrirDispositivos.java">
+    <entry file="file://$PROJECT_DIR$/src/EjemploChatWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="493">
+          <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
