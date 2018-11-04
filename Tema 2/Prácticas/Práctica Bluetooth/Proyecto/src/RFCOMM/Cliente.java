@@ -1,5 +1,9 @@
 package RFCOMM;
 
+import DescServRemotos.BuscarServicios;
+import DispComBluetooth.InfoLocal;
+import Utiles.ServicioBasico;
+
 import javax.bluetooth.RemoteDevice;
 import javax.microedition.io.Connector;
 import javax.microedition.io.StreamConnection;
@@ -8,13 +12,15 @@ import java.io.*;
 public class Cliente {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        // URL del servicio del servidor al que conectarse.
-        // String url = "btspp://localhost:" + new UUID(0x1101).toString() + ";name=chat";
-        // String url = "btspp://C83DD471B366:3;authenticate=false;encrypt=false;master=false";     // PABLO
-        String url = "btspp://0B1000000001:1;authenticate=false;encrypt=false;master=false";        // PROFESOR
+        System.out.println("INICIANDO CLIENTE...");
+        System.out.println(new InfoLocal());
+        System.out.println("Filtra el dispositivo y el servicio de chat al que quieres conectarte.\n");
+
+        BuscarServicios.main(null);
+        ServicioBasico servicio = BuscarServicios.servicioF;
 
         // Establecer la conexion asociandola al servicio indicado.
-        StreamConnection conexion = (StreamConnection) Connector.open(url);
+        StreamConnection conexion = (StreamConnection) Connector.open(servicio.getURL());
         RemoteDevice rd = RemoteDevice.getRemoteDevice(conexion);   // Dispositivo remoto (servidor) que se conecta.
 
         String servidor = "'" + rd.getFriendlyName(false) + "' (" + rd.getBluetoothAddress() +")";   // Datos del servidor.
