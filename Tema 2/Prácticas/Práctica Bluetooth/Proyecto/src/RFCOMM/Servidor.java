@@ -16,7 +16,7 @@ public class Servidor {
         System.out.println("INICIANDO SERVIDOR...");
 
         // URL del servicio del servidor.
-        String url = "btspp://localhost:" + new UUID(0x1101).toString() + ";name=chat";
+        String url = "btspp://localhost:" + new UUID(0x1101).toString() + ";name=Chat";
 
         // Creacion de un servicio cuya URL es la indicada (equivalente a ServerSocket, pero Bluetooth).
         StreamConnectionNotifier servicio = (StreamConnectionNotifier) Connector.open(url);
@@ -27,16 +27,15 @@ public class Servidor {
         // Mostrar informacion.
         System.out.println("\n" + servidor);
         System.out.println("RFCOMM '" + servidor.getNombre() + ":" + servidor.getDireccion() + "' iniciado.");
-        System.out.println(url);
-        System.out.println("Esperando clientes...");
+        System.out.println("URL del servicio: " + url);
+        System.out.println("Esperando clientes...\n");
 
         // Establecer la conexion asociandola al servicio creado.
         StreamConnection conexion = servicio.acceptAndOpen();       // El servicio espera y acepta peticiones.
         RemoteDevice rd = RemoteDevice.getRemoteDevice(conexion);   // Dispositivo remoto (cliente) que se conecta.
 
-        String cliente = rd.getFriendlyName(true);      // Nombre del cliente.
-
-        System.out.println("\nNuevo cliente: '" + cliente + "'.");
+        String cliente = rd.getFriendlyName(true);
+        System.out.println("Nuevo cliente: '" + cliente + "' (" + rd.getBluetoothAddress() + ")");
 
         // Creacion de los flujos (buffers) de escritura y de lectura.
         BufferedReader in = new BufferedReader(new InputStreamReader(conexion.openInputStream()));      // Lectura.
@@ -44,24 +43,31 @@ public class Servidor {
 
         // Creacion de las variables para los mensajes.
         Scanner sc = new Scanner(System.in);    // Scanner para la lectura por consola (teclado).
-        String respuesta;                       // Mensaje recibido del cliente.
-        String mensaje;                         // Mensaje enviado al cliente.
+        boolean seguir;
 
         // Blucle para enviar y recibir mensajes del cliente.
         do {
             System.out.println("Esperando respuesta del cliente...");
+            String mensaje = in.readLine();     // Mensaje recibido del cliente.
+            String respuesta;                   // Mensaje para enviar al cliente.
 
-            mensaje = in.readLine();        // Leer mensaje del cliente.
+            seguir = !mensaje.equals("FIN");    // Repetir el ciclo si no es "FIN".
 
             System.out.println(cliente + ": " + mensaje);       // Cliente al que se responde.
-            System.out.print(servidor.getNombre() + ": ");      // Respuesta del servidor.
 
-            respuesta = sc.nextLine();      // Lectura del mensaje por la consola.
+            if(seguir) {
+                System.out.print(servidor.getNombre() + ": ");      // Respuesta del servidor.
+                respuesta = sc.nextLine();      // Lectura del mensaje por la consola.
+
+            }else{
+                respuesta = "Sleep mode activating. Shutingdown...";
+            }
+
             out.write(respuesta);           // Enviar la respuesta del servidor (buffer de salida).
-            out.newLine();
-            out.flush();                    // Limpiar buffer.
+            out.newLine();                  // Escribir un separador de linea.
+            out.flush();                    // Limpiar el buffer.
 
-        }while (!mensaje.equals("FIN"));   // El servidor se apaga cuando el cliente envia "FIN".
+        }while (seguir);   // El servidor se apaga cuando el cliente envia "FIN".
 
         // Cierre de los flujos y de la conexion.
         in.close();             // Flujo (buffer) de entrada de mensajes.
@@ -69,6 +75,6 @@ public class Servidor {
         sc.close();             // Scanner para lectura por consola.
         conexion.close();       // Conexion del servidor.
 
-        System.out.println("Dispositivo '" + cliente + "' desconectado correctamente");
+        System.out.println("\nConexion con '" + cliente + "' finalizada");
     }
 }

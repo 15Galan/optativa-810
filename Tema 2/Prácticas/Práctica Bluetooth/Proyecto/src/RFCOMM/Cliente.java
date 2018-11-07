@@ -23,8 +23,8 @@ public class Cliente {
         StreamConnection conexion = (StreamConnection) Connector.open(servicio.getURL());
         RemoteDevice rd = RemoteDevice.getRemoteDevice(conexion);   // Dispositivo remoto (servidor) que se conecta.
 
-        String servidor = "'" + rd.getFriendlyName(false) + "' (" + rd.getBluetoothAddress() +")";   // Datos del servidor.
-        System.out.println("Conectado a " + servidor);
+        String servidor = rd.getFriendlyName(false);    // Nombre del dispositivo (servidor).
+        System.out.println("\nConectado a '" + servidor + "' (" + rd.getBluetoothAddress() + ")");   // Datos del servidor.
 
         // Creacion de los flujos de lectura.
         BufferedReader in = new BufferedReader(new InputStreamReader(conexion.openInputStream()));  // Recibir mensaje.
@@ -32,18 +32,20 @@ public class Cliente {
 
         // Creacion del flujo de salida.
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(conexion.openOutputStream()));
+
+        // Mensaje que se va a enviar.
         String mensaje;
 
         // Blucle para intercambiar mensajes con el servidor.
         do {
-            System.out.print("Mensaje para enviar: ");
+            System.out.print("Enviar: ");
             mensaje = texto.readLine();     // Leer mensaje de la consola.
 
             out.write(mensaje);             // Enviar el mensaje.
-            out.newLine();                  // Forzar el retorno de carro.
+            out.newLine();                  // Escribir un salto de linea.
             out.flush();                    // Limpiar el buffer.
 
-            System.out.print("Mensaje recibido: " + in.readLine() + "\n");     // Recibir el mensaje.
+            System.out.print(servidor + ": " + in.readLine() + "\n");     // Recibir el mensaje.
 
         } while (!mensaje.equals("FIN"));
 
@@ -51,5 +53,7 @@ public class Cliente {
         in.close();         // Flujo (buffer) de entrada.
         out.close();        // Flujo (buffer) de salida.
         conexion.close();   // Conexion del cliente.
+
+        System.out.println("\nConexion con '" + servidor + "' finalizada");
     }
 }

@@ -48,7 +48,7 @@ public class BuscarServicios {
                     DataElement elemento = servicio.getAttributeValue(SERVICE_NAME_ATTRID);
 
                     if (elemento != null) {
-                        String nombre = arreglarString(elemento.getValue().toString());
+                        String nombre = elemento.getValue().toString();
                         String URL = servicio.getConnectionURL(ServiceRecord.NOAUTHENTICATE_NOENCRYPT, false);
 
                         if (filtro != null) {
@@ -168,14 +168,14 @@ public class BuscarServicios {
      * @param cadena {@code String} para 'arreglar'.
      * @return nuevo {@code String} con el contenido de {@param cadena}, sin el ultimo byte a 0.
      */
-    private static String arreglarString(String cadena){
-        int numBytes = cadena.toCharArray().length-1;       // Tamaño de la cadena (bytes) menos el ultimo byte.
-        byte[] datos = new byte[numBytes];                  // Array de bytes vacio de tamaño 'numBytes'.
-
-        for(int i = 0; i < numBytes; i++){          // Recorre el array de bytes creado.
-            datos[i] = (byte) cadena.charAt(i);     // Asigna en cada byte
-        }
-
-        return new String(datos);   // String arreglado, sin el ultimo byte a 0.
-    }
+//    private static String arreglarString(String cadena){
+//        int numBytes = cadena.toCharArray().length-1;       // Tamaño de la cadena (bytes) menos el ultimo byte.
+//        byte[] datos = new byte[numBytes];                  // Array de bytes vacio de tamaño 'numBytes'.
+//
+//        for(int i = 0; i < numBytes; i++){          // Recorre el array de bytes creado.
+//            datos[i] = (byte) cadena.charAt(i);     // Asigna en cada byte
+//        }
+//
+//        return new String(datos);   // String arreglado, sin el ultimo byte a 0.
+//    }
 }
