@@ -2,7 +2,7 @@ package DescServRemotos;
 
 import DescDispRemotos.DescubrirDispositivos;
 import Utiles.Filtro;
-import Utiles.ServicioBasico;
+import Utiles.ServicioSimple;
 
 import javax.bluetooth.*;
 import java.io.BufferedReader;
@@ -14,7 +14,7 @@ public class BuscarServicios {
 
     private static int SERVICE_NAME_ATTRID = 0x0100;    // Atributo para filtrar los servicios.
 
-    public static ServicioBasico servicioF;     // Estas variables se
+    public static ServicioSimple servicioF;     // Estas variables se
     private static Filtro filtro;               // usaran en el caso
     private static String servicio;             // en el que el usuario
     private static String url;                  // decida filtrar un servicio.
@@ -27,8 +27,8 @@ public class BuscarServicios {
         List encontrados = DescubrirDispositivos.encontrados;   // Lista de dispositivos encontrados.
 
         // Crear un Array con los identificadores de servicios.
-        UUID uuids[] = {new UUID(0x1002)};              // Encontrar todos los servicios (1002).
-        int[] attrIDs = new int[] {SERVICE_NAME_ATTRID};          // Filtrar por atributo en ServicesRecord.
+        UUID uuids[] = inicializarUUIDs();                  // UUIDs que tendran todos los servicios encontrados.
+        int[] attrIDs = new int[] {SERVICE_NAME_ATTRID};    // Filtrar por atributo en 'ServicesRecord'.
 
         DiscoveryListener listener = new DiscoveryListener() {
 
@@ -48,7 +48,7 @@ public class BuscarServicios {
                     DataElement elemento = servicio.getAttributeValue(SERVICE_NAME_ATTRID);
 
                     if (elemento != null) {
-                        String nombre = elemento.getValue().toString();
+                        String nombre = elemento.getValue().toString().trim();
                         String URL = servicio.getConnectionURL(ServiceRecord.NOAUTHENTICATE_NOENCRYPT, false);
 
                         if (filtro != null) {
@@ -56,7 +56,7 @@ public class BuscarServicios {
                                 System.out.println("\tServicio: " + nombre);
                                 System.out.println("\t     URL: " + URL + "\n");
 
-                                servicioF = new ServicioBasico(nombre, URL);
+                                servicioF = new ServicioSimple(nombre, URL);
 
                                 servicios++;
                             }
@@ -125,6 +125,42 @@ public class BuscarServicios {
         }
     }
 
+    /**
+     * Inicializa un array con los diferentes UUIDs que debe poseer un servicio
+     * para ser detectado en la busqueda de servicios de un dispositivo.
+     *
+     * @return Un 'Array' de tipo {@code UUID[]} con los identificadores universales indicados.
+     * @throws IOException
+     */
+    private static UUID[] inicializarUUIDs() throws IOException {
+        // Creacion del array de
+        UUID[] uuids;
+
+        System.out.println("¿Filtrar por servicios de clase SerialPort (SPP)?    (si/no)");
+        BufferedReader consola = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Respuesta: ");
+        String texto = consola.readLine();
+
+        if(texto.equalsIgnoreCase("si")) {
+            uuids = new UUID[]{new UUID(0x1101)};   // Servicios de clase SerialPort Profile (SPP).
+
+        }else if(texto.equalsIgnoreCase("no")){
+            uuids = new UUID[]{new UUID(0x1002)};   // Servicios de clase PublicBrowseRoot (publicos).
+
+        }else{
+            System.err.println("Respuesta no reconocida, busqueda por defecto activada.");
+            uuids = new UUID[]{new UUID(0x1002)};
+        }
+
+        System.out.println(/* Linea en blanco */);
+
+        return uuids;
+    }
+
+    /**
+     * Ejecuta una peticion de filtrado al usuario con el que se almacenara un servicio
+     * en un objeto 'ServicioSimple' para poder manejarlo mas facilmente despues.
+     */
     private static void filtrarServicio(){
         BufferedReader consola = new BufferedReader(new InputStreamReader(System.in));
 
@@ -136,9 +172,9 @@ public class BuscarServicios {
 
             if(texto.equalsIgnoreCase("si")){
                 System.out.println("\nIntroduce el nombre o URL para encontrar.");
-                System.out.print("  Nombre del servicio: ");
+                System.out.print("\tNombre del servicio: ");
                 servicio = consola.readLine();
-                System.out.print("  URL del servicio: ");
+                System.out.print("\tURL del servicio: ");
                 url = consola.readLine();
                 System.out.println("\nBUSCANDO SERVICIO...\n");
 

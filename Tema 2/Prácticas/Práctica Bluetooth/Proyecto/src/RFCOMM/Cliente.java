@@ -2,7 +2,7 @@ package RFCOMM;
 
 import DescServRemotos.BuscarServicios;
 import DispComBluetooth.InfoLocal;
-import Utiles.ServicioBasico;
+import Utiles.ServicioSimple;
 
 import javax.bluetooth.RemoteDevice;
 import javax.microedition.io.Connector;
@@ -12,48 +12,61 @@ import java.io.*;
 public class Cliente {
 
     public static void main(String[] args) throws IOException, InterruptedException {
+        // Mostrar informacion local.
         System.out.println("INICIANDO CLIENTE...");
         System.out.println(new InfoLocal());
         System.out.println("Filtra el dispositivo y el servicio de chat al que quieres conectarte.\n");
 
+        // Iniciar busqueda de servicios.
         BuscarServicios.main(null);
-        ServicioBasico servicio = BuscarServicios.servicioF;
+        ServicioSimple servicio = BuscarServicios.servicioF;
 
         // Establecer la conexion asociandola al servicio indicado.
-        StreamConnection conexion = (StreamConnection) Connector.open(servicio.getURL());
-        RemoteDevice rd = RemoteDevice.getRemoteDevice(conexion);   // Dispositivo remoto (servidor) que se conecta.
+        StreamConnection conexion = null;
 
-        String servidor = rd.getFriendlyName(false);    // Nombre del dispositivo (servidor).
-        System.out.println("\nConectado a '" + servidor + "' (" + rd.getBluetoothAddress() + ")");   // Datos del servidor.
+        try{
+            conexion = (StreamConnection) Connector.open(servicio.getURL());
 
-        // Creacion de los flujos de lectura.
-        BufferedReader in = new BufferedReader(new InputStreamReader(conexion.openInputStream()));  // Recibir mensaje.
-        BufferedReader texto = new BufferedReader(new InputStreamReader(System.in));                // Leer de consola.
+        }catch (NullPointerException e){
+            System.err.println("Error en la conexion al servidor:");
+            System.out.println("\t'Servicio de conexion incorrecto' o 'servicio no guardado/encontrado'");
+        }
 
-        // Creacion del flujo de salida.
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(conexion.openOutputStream()));
+        if(conexion != null){
+            RemoteDevice rd = RemoteDevice.getRemoteDevice(conexion);   // Dispositivo remoto (servidor) que se conecta.
 
-        // Mensaje que se va a enviar.
-        String mensaje;
+            String servidor = rd.getFriendlyName(false);    // Nombre del dispositivo (servidor).
+            System.out.println("\nConectado a '" + servidor + "' (" + rd.getBluetoothAddress() + ")");   // Datos del servidor.
 
-        // Blucle para intercambiar mensajes con el servidor.
-        do {
-            System.out.print("Enviar: ");
-            mensaje = texto.readLine();     // Leer mensaje de la consola.
+            // Creacion de los flujos de lectura.
+            BufferedReader in = new BufferedReader(new InputStreamReader(conexion.openInputStream()));  // Recibir mensaje.
+            BufferedReader texto = new BufferedReader(new InputStreamReader(System.in));                // Leer de consola.
 
-            out.write(mensaje);             // Enviar el mensaje.
-            out.newLine();                  // Escribir un salto de linea.
-            out.flush();                    // Limpiar el buffer.
+            // Creacion del flujo de salida.
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(conexion.openOutputStream()));
 
-            System.out.print(servidor + ": " + in.readLine() + "\n");     // Recibir el mensaje.
+            // Mensaje que se va a enviar.
+            String mensaje;
 
-        } while (!mensaje.equals("FIN"));
+            // Blucle para intercambiar mensajes con el servidor.
+            do {
+                System.out.print("Enviar: ");
+                mensaje = texto.readLine();     // Leer mensaje de la consola.
 
-        // Cierre de los flujos y la conexion.
-        in.close();         // Flujo (buffer) de entrada.
-        out.close();        // Flujo (buffer) de salida.
-        conexion.close();   // Conexion del cliente.
+                out.write(mensaje);             // Enviar el mensaje.
+                out.newLine();                  // Escribir un salto de linea.
+                out.flush();                    // Limpiar el buffer.
 
-        System.out.println("\nConexion con '" + servidor + "' finalizada");
+                System.out.print(servidor + ": " + in.readLine() + "\n");     // Recibir el mensaje.
+
+            } while (!mensaje.equals("FIN"));
+
+            // Cierre de los flujos y la conexion.
+            in.close();         // Flujo (buffer) de entrada.
+            out.close();        // Flujo (buffer) de salida.
+            conexion.close();   // Conexion del cliente.
+
+            System.out.println("\nConexion con '" + servidor + "' finalizada");
+        }
     }
 }
