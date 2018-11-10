@@ -26,7 +26,7 @@ public class Servidor {
 
         // Mostrar informacion.
         System.out.println("\n" + servidor);
-        System.out.println("RFCOMM '" + servidor.getNombre() + ":" + servidor.getDireccion() + "' iniciado.");
+        System.out.println("\nRFCOMM '" + servidor.getNombre() + ":" + servidor.getDireccion() + "' iniciado.");
         System.out.println("URL del servicio: " + url);
         System.out.println("Esperando clientes...\n");
 

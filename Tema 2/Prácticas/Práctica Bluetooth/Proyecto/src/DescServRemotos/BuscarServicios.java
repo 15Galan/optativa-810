@@ -8,16 +8,15 @@ import javax.bluetooth.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BuscarServicios {
 
     private static int SERVICE_NAME_ATTRID = 0x0100;    // Atributo para filtrar los servicios.
 
-    public static ServicioSimple servicioF;     // Estas variables se
+    public static List<ServicioSimple> servicios;     // Estas variables se
     private static Filtro filtro;               // usaran en el caso
-    private static String servicio;             // en el que el usuario
-    private static String url;                  // decida filtrar un servicio.
 
     public static void main(String[] args) throws InterruptedException, IOException {
         final Object eventoServicios = new Object();            // Objeto usado para sincronizar la busqueda.
@@ -42,7 +41,7 @@ public class BuscarServicios {
 
             @Override   // Que hacer cuando se encuentra un servicio.
             public void servicesDiscovered(int id, ServiceRecord[] serviceRecords) {
-                int servicios = 0;
+                int cont = 0;
 
                 for (ServiceRecord servicio : serviceRecords) {
                     DataElement elemento = servicio.getAttributeValue(SERVICE_NAME_ATTRID);
@@ -56,25 +55,23 @@ public class BuscarServicios {
                                 System.out.println("\tServicio: " + nombre);
                                 System.out.println("\t     URL: " + URL + "\n");
 
-                                servicioF = new ServicioSimple(nombre, URL);
-
-                                servicios++;
+                                servicios.add(new ServicioSimple(servicio.getHostDevice(), nombre, URL));
                             }
 
                         } else {
                             System.out.println("\tServicio: " + nombre);
                             System.out.println("\t     URL: " + URL + "\n");
 
-                            servicios++;
+                            cont++;
                         }
                     }
                 }
 
-                // Mostrar mensaje de error en caso de no encontrar el/los servicio/s.
-                if (filtro != null && servicios == 0) {
+                // Mostrar informacion.
+                if (filtro != null && servicios.size() == 0) {      // No se encontro el servicio indicado en el filtro.
                     System.err.println("\tServicio no encontrado");
 
-                } else if (servicios == 0) {
+                } else if (filtro == null && cont == 0) {         // El dispositivo no posee servicios con los UUIDs indicados.
                     System.err.println("\nNo se encontraron servicios\n");
                 }
             }
@@ -99,13 +96,20 @@ public class BuscarServicios {
             // Datos del dispositivo que se analiza.
             String nombre = dispositivo.getFriendlyName(false);
             String direccion = dispositivo.getBluetoothAddress();
+            String servicio = "";
+            String URL = "";
+
+            if(filtro != null) {
+                servicio = filtro.getNombre();
+                URL = filtro.getDireccion();
+            }
 
             synchronized (eventoServicios) {
-                if(filtro != null && servicio != null) {
+                if(filtro != null && !servicio.equals("")) {
                     System.out.println("Buscando el servicio '" + servicio + "' en el dispositivo '" + nombre + "' (" + direccion + ")...");
 
-                } else if(filtro != null && url != null) {
-                    System.out.println("Buscando el servicio '" + url + "' en el dispositivo '" + nombre + "' (" + direccion + ")...");
+                } else if(filtro != null && !URL.equals("")) {
+                    System.out.println("Buscando el servicio '" + URL + "' en el dispositivo '" + nombre + "' (" + direccion + ")...");
 
                 } else {
                     System.out.println("Buscando en el dispositivo '" + nombre + "' (" + direccion + ")...");
@@ -113,15 +117,16 @@ public class BuscarServicios {
 
                 LocalDevice.getLocalDevice().getDiscoveryAgent().searchServices(attrIDs, uuids, dispositivo, listener);
 
+                // Busqueda bloqueante de servicios en el dispositivo actual.
                 eventoServicios.wait();
             }
         }
 
         if(filtro != null) {
-            System.out.println("...BUSQUEDA DEl SERVICIO FINALIZADA.");
+            System.out.println("...BUSQUEDA DEl SERVICIO FINALIZADA.\n");
 
         }else{
-            System.out.println("...BUSQUEDA DE SERVICIOS FINALIZADA.");
+            System.out.println("...BUSQUEDA DE SERVICIOS FINALIZADA.\n");
         }
     }
 
@@ -148,7 +153,7 @@ public class BuscarServicios {
             uuids = new UUID[]{new UUID(0x1002)};   // Servicios de clase PublicBrowseRoot (publicos).
 
         }else{
-            System.err.println("Respuesta no reconocida, busqueda por defecto activada.");
+            System.err.println("Respuesta no reconocida, busqueda de SPPs desactivada por defecto");
             uuids = new UUID[]{new UUID(0x1002)};
         }
 
@@ -173,12 +178,13 @@ public class BuscarServicios {
             if(texto.equalsIgnoreCase("si")){
                 System.out.println("\nIntroduce el nombre o URL para encontrar.");
                 System.out.print("\tNombre del servicio: ");
-                servicio = consola.readLine();
+                String servicio = consola.readLine();
                 System.out.print("\tURL del servicio: ");
-                url = consola.readLine();
+                String url = consola.readLine();
                 System.out.println("\nBUSCANDO SERVICIO...\n");
 
                 filtro = new Filtro(servicio, url);
+                servicios = new ArrayList<>();
 
             }else if (texto.equalsIgnoreCase("no")){
                 System.out.println("\nBUSCANDO SERVICIOS...\n");
@@ -192,26 +198,4 @@ public class BuscarServicios {
             System.err.println("Error: " + e.getMessage());
         }
     }
-
-    /**
-     * 'Arregla' un {@code String} desde los bytes eliminando el ultimo byte a 0.
-     * Esto permite comparar correctamente dos {@code Strings} con 'equals()', ya que
-     * devolver false aunque las cadenas sean iguales si tienen distinto numero de bytes.
-     *
-     * NOTA: Como los datos recibidos estan en ingles, no hay ningun valor ASCII que ocupe
-     * mas de un byte, por eso puede hacerse 'datos[i] = (byte) cadena.charAt(i)'.
-     *
-     * @param cadena {@code String} para 'arreglar'.
-     * @return nuevo {@code String} con el contenido de {@param cadena}, sin el ultimo byte a 0.
-     */
-//    private static String arreglarString(String cadena){
-//        int numBytes = cadena.toCharArray().length-1;       // Tamaño de la cadena (bytes) menos el ultimo byte.
-//        byte[] datos = new byte[numBytes];                  // Array de bytes vacio de tamaño 'numBytes'.
-//
-//        for(int i = 0; i < numBytes; i++){          // Recorre el array de bytes creado.
-//            datos[i] = (byte) cadena.charAt(i);     // Asigna en cada byte
-//        }
-//
-//        return new String(datos);   // String arreglado, sin el ultimo byte a 0.
-//    }
 }

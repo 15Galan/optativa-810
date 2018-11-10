@@ -43,12 +43,10 @@ public class InfoLocal {
         return  "Nombre     : " + nombre + "\n" +
                 "Direccion  : " + direccion + "\n" +
                 "Tipo       : " + dispositivo + "\n" +
-                "Ver. Radio : " + version + "\n";
+                "Ver. Radio : " + version;
     }
 
     public static void main(String[] args) throws BluetoothStateException {
-        InfoLocal info = new InfoLocal();
-
-        System.out.println(info);
+        System.out.println(new InfoLocal());
     }
 }

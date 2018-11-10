@@ -10,6 +10,14 @@ public class Filtro {
         this.direccion = direccion;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
     /**
      * Comprueba si un elemento debe ser filtrado en funcion de la cantidad
      * de argumentos que se introdujeron en el filtro (nombre, direccion o ambos).

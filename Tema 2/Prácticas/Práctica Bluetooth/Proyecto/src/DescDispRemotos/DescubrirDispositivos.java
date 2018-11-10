@@ -12,7 +12,6 @@ import java.util.List;
 public class DescubrirDispositivos {
 
     public static final List<RemoteDevice> encontrados = new ArrayList<>(); // Lista para almacenar los dispositivos.
-
     private static Filtro filtro;       // Objeto que manejara las comprobaciones para filtrar un dispositivo.
 
     public static void main(String[] args) throws BluetoothStateException, InterruptedException {
@@ -60,7 +59,7 @@ public class DescubrirDispositivos {
             @Override   // Que hacer cuando la busqueda de dispositivos finaliza.
             public void inquiryCompleted(int i) {
                 if(encontrados.size() == 0){
-                    System.err.println("Dispositivo no encontrado.\n\n");
+                    System.err.println("Dispositivo no encontrado\n\n");
                 }
 
                 System.out.println("...BUSQUEDA DE DISPOSITIVOS FINALIZADA: ");
@@ -102,7 +101,7 @@ public class DescubrirDispositivos {
             String texto = consola.readLine();
 
             if(texto.equalsIgnoreCase("si")){
-                System.out.println("\nIntroduce un nombre y/o direccion Bluetooth para filtrar.");
+                System.out.println("\nIntroduce un nombre y/o direccion Bluetooth para filtrar");
                 System.out.print("\tNombre del dispositivo: ");
                 String nombre = consola.readLine();
                 System.out.print("\tDireccion Bluetooth: ");
@@ -115,7 +114,7 @@ public class DescubrirDispositivos {
                 System.out.println("\nBUSCANDO DISPOSITIVOS...\n");
 
             }else{
-                System.err.println("Respuesta no reconocida, busqueda por defecto activada.");
+                System.err.println("Respuesta no reconocida, busqueda por defecto activada");
                 System.out.println("\nBUSCANDO DISPOSITIVOS...\n");
             }
 

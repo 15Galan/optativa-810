@@ -5,6 +5,7 @@ import java.io.IOException;
 
 public class ServicioSimple {
 
+    private int ID;
     private RemoteDevice dispositivo;   // Dispositivo que ofrece el servicio.
     private String servicio;            // Nombre del servicio registrado.
     private String URL;                 // URL del servicio registrado.
@@ -17,6 +18,10 @@ public class ServicioSimple {
         this.dispositivo = dispositivo;
         this.servicio = servicio;
         this.URL = URL;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public RemoteDevice getDispositivo() {
@@ -51,6 +56,10 @@ public class ServicioSimple {
         return URL;
     }
 
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
     public void setDispositivo(RemoteDevice dispositivo) {
         this.dispositivo = dispositivo;
     }
@@ -58,9 +67,11 @@ public class ServicioSimple {
     @Override
     public String toString(){
 
-        return "Dispositivo: " + getNombreDispositivo() +
-               "            (" + getDireccionDispositivo() + ")" +
-               "   Servicio: " + getServicio() +
-               "        URL: " + getURL();
+        return "Servicio [" + getID() + "]" + "\n" +
+                "\tNombre: " + getServicio() + "\n" +
+                "\t   URL: " + getURL() + "\n" +
+                "\tDispositivo\n" +
+                "\t  Direccion: " + getDireccionDispositivo() + "\n" +
+                "\t     Nombre: " + getNombreDispositivo() + "\n";
     }
 }
