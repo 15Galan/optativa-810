@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="40081341-eb49-46fb-b234-178c93763862" name="Default Changelist" comment="Cambios finales en la Práctica con Bluetooth&#10;&#10;Se han modificado la mayoría de clases.&#10;La clase 'BuscarServicios'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DescDispRemotos/DescubrirDispositivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DescDispRemotos/DescubrirDispositivos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DescServRemotos/BuscarServicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DescServRemotos/BuscarServicios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DispComBluetooth/InfoLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DispComBluetooth/InfoLocal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InfoLocal_Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RFCOMM/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RFCOMM/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RFCOMM/ClienteGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RFCOMM/ClienteGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utiles/Filtro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utiles/Filtro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utiles/ServicioSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utiles/ServicioSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prácticas con WhireShark/Parte 2/Enunciado.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../Prácticas con WhireShark/Parte 2/Enunciado.pdf" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,21 +61,22 @@
     <session id="177336651">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.13" value="1" />
-          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.16" value="2" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="3" />
           <entry key="project.open.time.63" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.open.time.8" value="3" />
-          <entry key="project.opened" value="18" />
+          <entry key="project.open.time.8" value="4" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -128,13 +122,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/DescServRemotos/BuscarServicios.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="554">
+                <state relative-caret-position="131">
                   <caret line="155" column="65" selection-start-line="155" selection-start-column="65" selection-end-line="155" selection-end-column="65" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="docComment;method#inicializarUUIDs#0;class#BuscarServicios#0" />
-                    <element signature="docComment;method#filtrarServicio#0;class#BuscarServicios#0" />
-                    <element signature="method#filtrarServicio#0;class#BuscarServicios#0" />
                   </folding>
                 </state>
               </provider>
@@ -143,8 +135,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Utiles/Filtro.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+                <state relative-caret-position="238">
+                  <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
                   <folding>
                     <element signature="e#359#360#0" expanded="true" />
                     <element signature="e#388#389#0" expanded="true" />
@@ -159,8 +151,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/DescDispRemotos/DescubrirDispositivos.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1253">
-                  <caret line="116" column="90" lean-forward="true" selection-start-line="116" selection-start-column="90" selection-end-line="116" selection-end-column="90" />
+                <state relative-caret-position="1853">
+                  <caret line="116" column="90" selection-start-line="116" selection-start-column="90" selection-end-line="116" selection-end-column="90" />
                 </state>
               </provider>
             </entry>
@@ -168,7 +160,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Utiles/ServicioSimple.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1088">
+                <state relative-caret-position="1003">
                   <caret line="74" column="21" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -185,7 +177,7 @@
             <entry file="file://$PROJECT_DIR$/src/RFCOMM/Servidor.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="340">
-                  <caret line="28" column="78" selection-start-line="28" selection-start-column="78" selection-end-line="28" selection-end-column="78" />
+                  <caret line="28" column="80" selection-start-line="28" selection-start-column="80" selection-end-line="28" selection-end-column="80" />
                 </state>
               </provider>
             </entry>
@@ -193,8 +185,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/RFCOMM/Cliente.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-442">
-                  <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+                <state relative-caret-position="170">
+                  <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -205,8 +197,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/DispComBluetooth/InfoLocal.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="104">
-                  <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+                <state relative-caret-position="510">
+                  <caret line="41" selection-start-line="41" selection-end-line="41" />
                 </state>
               </provider>
             </entry>
@@ -223,15 +215,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/RFCOMM/ClienteGUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="163">
-                  <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state relative-caret-position="758">
+                  <caret line="127" column="1" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -312,8 +301,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -360,6 +347,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Course" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -392,7 +381,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GUI">
+  <component name="RunManager" selected="Application.Servidor RFCOMM">
     <configuration name="Buscar Servicios" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="DescServRemotos.BuscarServicios" />
       <module name="Práctica con Bluetooth" />
@@ -495,6 +484,11 @@
       <workItem from="1541721793583" duration="596000" />
       <workItem from="1541752846324" duration="34000" />
       <workItem from="1541860210474" duration="3306000" />
+      <workItem from="1541890247270" duration="8000" />
+      <workItem from="1541950056374" duration="8000" />
+      <workItem from="1541954766540" duration="14000" />
+      <workItem from="1542373178285" duration="5730000" />
+      <workItem from="1542408559880" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="Cambios en la Práctica con Bluetooth&#10;&#10;Se ha creado el paquete 'Utiles' que contendrá clases para mejorar la&#10;modularización del proyecto.&#10;Se ha creado la clase 'Filtro' con el que poder filtrar tanto&#10;dispositivos como servicios independientemente.&#10;Se ha modificado la variable booleana 'filtro' de las clases&#10;'DescubrirDispositivos' y 'BuscarServicios', ahora es de tipo Filtro.">
       <created>1541009462874</created>
@@ -556,13 +550,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56542000" />
+    <option name="totallyTimeSpent" value="62901000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4972973" visible="true" weight="0.21268657" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4972973" visible="true" weight="0.22441365" />
       <window_info id="Structure" order="1" sideWeight="0.5027027" side_tool="true" weight="0.20953101" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -736,23 +730,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1479">
           <caret line="100" selection-start-line="100" selection-end-line="100" />
-          <folding>
-            <element signature="e#3387#3388#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RFCOMM/Servidor.java">
+    <entry file="file://$PROJECT_DIR$/src/DescServRemotos/BuscarServicios.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="28" column="78" selection-start-line="28" selection-start-column="78" selection-end-line="28" selection-end-column="78" />
+        <state relative-caret-position="131">
+          <caret line="155" column="65" selection-start-line="155" selection-start-column="65" selection-end-line="155" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#inicializarUUIDs#0;class#BuscarServicios#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Utiles/Filtro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        <state relative-caret-position="238">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
           <folding>
             <element signature="e#359#360#0" expanded="true" />
             <element signature="e#388#389#0" expanded="true" />
@@ -763,16 +758,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DispComBluetooth/InfoLocal.java">
+    <entry file="file://$PROJECT_DIR$/src/DescDispRemotos/DescubrirDispositivos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="1853">
+          <caret line="116" column="90" selection-start-line="116" selection-start-column="90" selection-end-line="116" selection-end-column="90" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Utiles/ServicioSimple.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
+        <state relative-caret-position="1003">
           <caret line="74" column="21" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -784,40 +779,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DescDispRemotos/DescubrirDispositivos.java">
+    <entry file="file://$PROJECT_DIR$/src/RFCOMM/Servidor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1253">
-          <caret line="116" column="90" lean-forward="true" selection-start-line="116" selection-start-column="90" selection-end-line="116" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RFCOMM/ClienteGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="340">
+          <caret line="28" column="80" selection-start-line="28" selection-start-column="80" selection-end-line="28" selection-end-column="80" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RFCOMM/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+        <state relative-caret-position="170">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DescServRemotos/BuscarServicios.java">
+    <entry file="file://$PROJECT_DIR$/src/DispComBluetooth/InfoLocal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="155" column="65" selection-start-line="155" selection-start-column="65" selection-end-line="155" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#inicializarUUIDs#0;class#BuscarServicios#0" />
-            <element signature="docComment;method#filtrarServicio#0;class#BuscarServicios#0" />
-            <element signature="method#filtrarServicio#0;class#BuscarServicios#0" />
-          </folding>
+        <state relative-caret-position="510">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RFCOMM/ClienteGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="758">
+          <caret line="127" column="1" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
         </state>
       </provider>
     </entry>
