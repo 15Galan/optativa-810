@@ -1,0 +1,4 @@
+Usar una herramienta de visualización de satélites (podéis utilizar alguna de las que aparecen en las diapositivas, o cualquier otra app o servicio web) para encontrar dos de ellos orbitando próximos a la península ibérica.
+A continuación se propone, para cada uno, identificar tantos aspectos como sea posible con respecto a los conceptos vistos en el tema: tipo de órbita, altitud, cobertura, periodo, compañía responsable, aplicaciones y servicios proporcionados, etc.
+
+Se puede hacer uso de tantas fuentes de información como se quiera, pudiendo acompañar el documento PDF con referencias y capturas de pantalla de las herramientas empleadas.
