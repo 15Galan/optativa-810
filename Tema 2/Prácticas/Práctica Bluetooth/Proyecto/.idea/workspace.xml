@@ -61,10 +61,10 @@
     <session id="177336651">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="21" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.16" value="2" />
@@ -76,7 +76,7 @@
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="4" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="24" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -301,8 +301,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -350,6 +348,8 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Course" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -489,7 +489,6 @@
       <workItem from="1541954766540" duration="14000" />
       <workItem from="1542373178285" duration="5730000" />
       <workItem from="1542408559880" duration="599000" />
-      <workItem from="1542653905127" duration="132000" />
     </task>
     <task id="LOCAL-00001" summary="Cambios en la Práctica con Bluetooth&#10;&#10;Se ha creado el paquete 'Utiles' que contendrá clases para mejorar la&#10;modularización del proyecto.&#10;Se ha creado la clase 'Filtro' con el que poder filtrar tanto&#10;dispositivos como servicios independientemente.&#10;Se ha modificado la variable booleana 'filtro' de las clases&#10;'DescubrirDispositivos' y 'BuscarServicios', ahora es de tipo Filtro.">
       <created>1541009462874</created>
@@ -558,13 +557,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63033000" />
+    <option name="totallyTimeSpent" value="62901000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4972973" visible="true" weight="0.22654584" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4972973" visible="true" weight="0.22441365" />
       <window_info id="Structure" order="1" sideWeight="0.5027027" side_tool="true" weight="0.20953101" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
